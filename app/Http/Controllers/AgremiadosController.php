@@ -10,7 +10,7 @@ use App\Models\User;
 
 class AgremiadosController extends Controller
 {
-    public function newAgremiado(Request $request)
+    public function nuevoAgremiado(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
@@ -40,11 +40,13 @@ class AgremiadosController extends Controller
             return response($agremiado, 200);
         }
 
+
     public function getAgremiado()
     {
         return response()->json(agremiados::all(), 200);
     }
 
+    
     public function deleteAgremiadoById($id)
     {
         $agremiado = agremiados::find($id);
@@ -55,7 +57,8 @@ class AgremiadosController extends Controller
         return response()->json(['message' => 'Agremiado eliminado exitosamente'], 200);
     }
 
-    public function updateagremiado(Request $request, $id)
+    
+    public function updateAgremiado(Request $request, $id)
     {
         $agremiado = agremiados::find($id);
 
