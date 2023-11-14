@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class roles extends Model
+class solicitudes extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'rol'
+        'NUE',
+        'ruta_archivo'
     ];
-
-    // Relación de roles con usuarios
-    public function users()
-    {
-        return $this->hasMany(User::class, 'id');
-    }
+    
 }
