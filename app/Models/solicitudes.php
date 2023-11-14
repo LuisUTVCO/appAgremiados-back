@@ -13,5 +13,4 @@ class solicitudes extends Model
         'NUE',
         'ruta_archivo'
     ];
-    
 }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('a_paterno');
             $table->string('a_materno');
             $table->string('nombre');
-            $table->enum('sexo', ['Hombre', 'Mujer', 'Prefiero no decirlo']);
+            $table->enum('sexo', ['Hombre', 'Mujer', 'Prefiero no decir']);
             $table->string('NUP', 10)->unique();
             $table->string('NUE')->unique();
             $table->string('RFC', 13)->unique();

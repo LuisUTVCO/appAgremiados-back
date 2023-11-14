@@ -9,9 +9,8 @@ class agremiados extends Model
 {
     use HasFactory;
 
-    // Relación de roles con usuarios
-    public function users()
-    {
+        // Relación de roles con usuarios
+     public function users(){
         return $this->hasMany(User::class);
     }
 
@@ -28,5 +27,5 @@ class agremiados extends Model
         'telefono',
         'cuota'
     ];
-    
+
 }
