@@ -12,7 +12,6 @@ class AgremiadosController extends Controller
 {
     public function nuevoAgremiado(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'a_paterno' => 'required',
             'a_materno' => 'required',
@@ -33,12 +32,12 @@ class AgremiadosController extends Controller
 
         $agremiado = agremiados::create($request->all());
         User::create([
-                'NUE' => $request->NUE,
-                'password' => bcrypt($request->NUE),
-                'id_rol' => 1
-            ]);
-            return response($agremiado, 200);
-        }
+            'NUE' => $request->NUE,
+            'password' => bcrypt($request->NUE),
+            'id_rol' => 2
+        ]);
+        return response($agremiado, 200);
+    }
 
 
     public function getAgremiado()
@@ -46,7 +45,7 @@ class AgremiadosController extends Controller
         return response()->json(agremiados::all(), 200);
     }
 
-    
+
     public function deleteAgremiadoById($id)
     {
         $agremiado = agremiados::find($id);
@@ -57,7 +56,7 @@ class AgremiadosController extends Controller
         return response()->json(['message' => 'Agremiado eliminado exitosamente'], 200);
     }
 
-    
+
     public function updateAgremiado(Request $request, $id)
     {
         $agremiado = agremiados::find($id);
@@ -70,5 +69,4 @@ class AgremiadosController extends Controller
 
         return response()->json(['message' => 'Agremiado actualizado con éxito']);
     }
-
 }

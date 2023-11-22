@@ -9,18 +9,33 @@ use App\Models\solicitudes;
 
 class SolicitudesController extends Controller
 {
-    public function updateSolicitud(Request $request, $id)
 
+    public function nuevasolicitud(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'NUE' => 'required', // Asegura que NUE sea único en la tabla
+            'ruta_archivo' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+        $solicitud = solicitudes::create($request->all());
+        return response()->json(['message' => 'Solicitud agregada exitosamente'], 200);
+    }
+
+    public function updateSolicitud(Request $request, $id)
     {
         $solicitud = solicitudes::find($id);
 
         if (!$solicitud) {
-            return response()->json(['message' => 'solicitud no encontrado'], 404);
+            return response()->json(['message' => 'Solicitud no encontrada'], 404);
         }
 
         $solicitud->update($request->all());
 
-        return response()->json(['message' => 'solicitud actualizado con éxito']);
+        return response()->json(['message' => 'Solicitud actualizada con éxito']);
     }
 
 
@@ -38,20 +53,5 @@ class SolicitudesController extends Controller
         }
         $solicitud->delete();
         return response()->json(['message' => 'Solicitud eliminada exitosamente'], 200);
-    }
-
-    public function nuevasolicitud(Request $request)
-    {
-
-        $validator = Validator::make($request->all(), [
-            'NUE' => 'required', // Asegura que NUE sea único en la tabla
-            'ruta_archivo' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
-        $solicitud = solicitudes::create($request->all());
-        return response()->json(['message' => 'solicitud agregado exitosamente'], 200);
     }
 }
