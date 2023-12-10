@@ -76,4 +76,21 @@ class SolicitudesController extends Controller
 
         return response()->json(['Solicitud' => $solicitud], 200);
     }
+
+    public function getArchivo($rutaArchivo)
+    {
+
+        $filePath = public_path('storage/files/' . $rutaArchivo);
+
+        if (file_exists($filePath)) {
+            $headers = [
+                'Content-Type' => mime_content_type($filePath),
+                'Content-Disposition' => 'attachment; filename="' . basename($filePath) . '"',
+            ];
+
+            return  response()->download($filePath, null, $headers);
+        } else {
+            return response()->json(['error' => 'Archivo no encontrado'], 404);
+        }
+    }
 }

@@ -34,6 +34,7 @@ Route::controller(SolicitudesController::class)->group(function () {
     Route::get('obtenerSolicitud', 'getSolicitud');
     Route::delete('eliminarsolicitud/{id}', 'deleteSolicitudById');
     Route::post('agregarsolicitud', 'nuevasolicitud');
+    Route::get('dowlandArchivo', 'getArchivo');
 });
 
 Route::controller(UsuariosController::class)->group(function () {
