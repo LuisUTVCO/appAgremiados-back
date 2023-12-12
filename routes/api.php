@@ -27,6 +27,7 @@ Route::controller(AgremiadosController::class)->group(function () {
     Route::patch('actualizarAgremiado/{id}', 'updateAgremiado');
     Route::get('obtenerAgremiados', 'getAgremiado');
     Route::delete('eliminarAgremiado/{id}', 'deleteAgremiadoById');
+    Route::get('obtenerAgremiado/{id}', 'obtenerAgremiadoPorId');
 });
 
 Route::controller(SolicitudesController::class)->group(function () {
@@ -34,7 +35,7 @@ Route::controller(SolicitudesController::class)->group(function () {
     Route::get('obtenerSolicitud', 'getSolicitud');
     Route::delete('eliminarsolicitud/{id}', 'deleteSolicitudById');
     Route::post('agregarsolicitud', 'nuevasolicitud');
-    Route::get('dowlandArchivo', 'getArchivo');
+    Route::get('dowlandArchivo/{ruta_archivo}', 'getArchivo');
 });
 
 Route::controller(UsuariosController::class)->group(function () {
